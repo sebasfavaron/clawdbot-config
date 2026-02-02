@@ -154,10 +154,10 @@ sudo tune2fs -m 8 /dev/mmcblk0p2  # 8% = ~1.1GB reserved for root
 
 - [ ] Reset reserved space: `sudo tune2fs -m 5 /dev/mmcblk0p2` (back to default 5%)
 - [ ] Remove aggressive cleanup: `sudo rm /etc/tmpfiles.d/cleanup.conf` 
-- [ ] Remove custom protection scripts:
-  - `rm scripts/memory_monitor.sh scripts/storage_manager.sh scripts/safe_install.sh scripts/daily_maintenance.sh`
-- [ ] Remove daily maintenance cron (if installed)
-- [ ] Verify normal systemd-tmpfiles behavior restored
+- [x] Remove custom protection scripts: ✅ **DONE (02/02/2026)**
+  - ~~`rm scripts/memory_monitor.sh storage_manager.sh safe_install.sh daily_maintenance.sh`~~
+- [x] Remove daily maintenance cron: ✅ **N/A** (no cron jobs were installed)
+- [x] Verify normal systemd-tmpfiles behavior: ✅ **CONFIRMED** (native protection active)
 
 **Notas:** Los scripts custom en `/home/sebas/clawd/scripts/` pueden ser útiles para otros proyectos pero no necesarios con storage adecuado.
 
