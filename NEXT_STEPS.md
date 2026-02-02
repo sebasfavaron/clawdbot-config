@@ -123,6 +123,41 @@ Cosas para agregar y mejorar en nuestro setup de Clawdbot.
 - [ ] Documentation improvements
 - [ ] Performance monitoring
 
+## 📦 Storage Management (Para cuando se agregue más storage)
+
+### ✅ Native Linux Protection (Temporalmente Activo - 02/02/2026)
+**Implementado para evitar lock-outs hasta upgrade de storage:**
+
+**1. Reserved Space Aumentado:**
+```bash
+sudo tune2fs -m 8 /dev/mmcblk0p2  # 8% = ~1.1GB reserved for root
+```
+
+**2. Automatic Cleanup (systemd-tmpfiles):**
+```bash
+# Config: /etc/tmpfiles.d/cleanup.conf
+# Limpia automáticamente:
+# - npm cache >3 días
+# - pip/browser cache >7 días  
+# - /tmp files >1 día
+# - apt cache >7 días
+# Runs daily via systemd-tmpfiles-clean.timer
+```
+
+**3. Efecto:** Sistema no se bloquea incluso si users llegan a 100%
+
+### 🗑️ Cleanup Tasks (Para después del upgrade)
+**Cuando se agregue más storage, remover protección temporaria:**
+
+- [ ] Reset reserved space: `sudo tune2fs -m 5 /dev/mmcblk0p2` (back to default 5%)
+- [ ] Remove aggressive cleanup: `sudo rm /etc/tmpfiles.d/cleanup.conf` 
+- [ ] Remove custom protection scripts:
+  - `rm scripts/memory_monitor.sh scripts/storage_manager.sh scripts/safe_install.sh scripts/daily_maintenance.sh`
+- [ ] Remove daily maintenance cron (if installed)
+- [ ] Verify normal systemd-tmpfiles behavior restored
+
+**Notas:** Los scripts custom en `/home/sebas/clawd/scripts/` pueden ser útiles para otros proyectos pero no necesarios con storage adecuado.
+
 ## 📝 Ideas Vagas
 
 - [ ] AI-powered relationship mapping

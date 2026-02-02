@@ -24,6 +24,9 @@
     gap: 1rem;
     margin-top: 1.5rem;
   }
+  @media (max-width: 640px) {
+    .page { padding: 1.2rem; }
+  }
   .card {
     display: block;
     padding: 1.25rem;

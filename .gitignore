@@ -1,3 +1,62 @@
+# Clawdbot Configuration Repository .gitignore
+# ================================================
+
+# Personal/Sensitive Data - DO NOT COMMIT
+# ========================================
+# Personal memory files
+memory/
+MEMORY.md
+# User-specific configuration
+USER.md
+# Identity can contain personal info
+IDENTITY.md
+# Exports may contain sensitive data
+exports/
+
+# Temporary/Cache Files
+# ====================
 __pycache__/
 *.pyc
-exports/
+*.pyo
+*.pyd
+.Python
+*.so
+.trash/
+.cache/
+*.tmp
+*.log
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS Generated
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Project Specific
+# ================
+# Separate project repositories
+europe-travel-assistant/
+web/calistenia/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/

@@ -13,11 +13,14 @@ log_message() {
 
 # Function to check recent session messages for completion phrases
 check_recent_messages() {
-    # Get the current session key from Clawdbot
-    CURRENT_SESSION=$(clawdbot sessions list --limit 1 --json 2>/dev/null | jq -r '.sessions[0].sessionKey // empty' 2>/dev/null)
+    # Target the main user session specifically
+    CURRENT_SESSION="agent:main:main"
     
-    if [ -z "$CURRENT_SESSION" ]; then
-        log_message "No active session found"
+    # Verify the session exists
+    SESSION_EXISTS=$(clawdbot sessions list --json 2>/dev/null | jq -r --arg session "$CURRENT_SESSION" '.sessions[] | select(.key == $session) | .key' 2>/dev/null)
+    
+    if [ -z "$SESSION_EXISTS" ]; then
+        log_message "Main session not found or not active"
         return
     fi
     

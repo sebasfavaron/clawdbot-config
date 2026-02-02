@@ -38,20 +38,42 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 0.9rem 1.5rem;
     background: #0f172a;
     border-bottom: 1px solid #1f2937;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
   .brand {
     font-weight: 700;
     text-decoration: none;
     color: #e5e7eb;
   }
+  nav {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
   nav a {
-    margin-left: 1rem;
     text-decoration: none;
     color: #cbd5f5;
   }
   nav a:hover { color: #fff; }
   main { min-height: calc(100vh - 64px); }
+
+  @media (max-width: 640px) {
+    .topbar {
+      padding: 0.75rem 1rem;
+    }
+    nav {
+      width: 100%;
+      gap: 0.5rem;
+    }
+    nav a {
+      padding: 0.35rem 0.6rem;
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 8px;
+    }
+  }
 </style>
